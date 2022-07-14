@@ -1,4 +1,4 @@
-# Thinks ToDo After Install Ubuntu
+# Things ToDo After Install Ubuntu
 
 ### Required OS Software
 
