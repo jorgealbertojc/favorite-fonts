@@ -45,16 +45,16 @@ This will install `make`, `gcc`, `g++` and other required software to compile an
 sudo apt -y install vim ubuntu-restricted-* build-essential \
     net-tools network-manager \
     linux-headers-$(uname -r) \
+    gconf2 dconf-editor macchanger pavucontrol pulseaudio \
     libdvdread8 p7zip-full unace unzip file-roller atool
 ```
 
 ---
 
-#### Install Gnome Shell
+#### Install Gnome Shell Extensions and Tweaks
 
 ```bash
-sudo apt -y install gnome-shell-extensions gnome-shell-extension-prefs \
-    gnome-tweaks gconf2 dconf-editor macchanger pavucontrol pulseaudio
+sudo apt -y install gnome-shell-extensions gnome-shell-extension-prefs gnome-tweaks
 ```
 
 ---
