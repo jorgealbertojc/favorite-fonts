@@ -65,7 +65,7 @@ sudo apt -y install gnome-shell-extensions gnome-shell-extension-prefs \
 
 ```bash
 curl --location --show-error --silent --request GET \
-    --url 'https://github.com/jorgealbertojc/favorite-fonts/raw/master/lato.zip' \
+    --url 'https://github.com/jorgealbertojc/thinks-todo-after-install-ubuntu/raw/master/fonts/lato.zip' \
     --output lato.zip --write-out '%{http_code}'
 ```
 
@@ -73,7 +73,7 @@ curl --location --show-error --silent --request GET \
 
 ```bash
 curl --location --show-error --silent --request GET \
-    --url 'https://github.com/jorgealbertojc/favorite-fonts/raw/master/monaco.zip' \
+    --url 'https://github.com/jorgealbertojc/thinks-todo-after-install-ubuntu/raw/master/fonts/monaco.zip' \
     --output lato.zip --write-out '%{http_code}'
 ```
 
@@ -81,7 +81,7 @@ curl --location --show-error --silent --request GET \
 
 ```bash
 curl --location --show-error --silent --request GET \
-    --url 'https://github.com/jorgealbertojc/favorite-fonts/raw/master/open-sans.zip' \
+    --url 'https://github.com/jorgealbertojc/thinks-todo-after-install-ubuntu/raw/master/fonts/open-sans.zip' \
     --output lato.zip --write-out '%{http_code}'
 ```
 
@@ -550,7 +550,8 @@ http --follow 'http://localhost'
 
 ```
 sudo apt -y install \
-    pitivi gimp inkscape obs-studio cheese handbrake
+    pitivi gimp inkscape obs-studio cheese handbrake \
+    --fix-missing --fix-broken
 ```
 
 ---
@@ -559,7 +560,8 @@ sudo apt -y install \
 
 ```bash
 sudo apt -y install \
-    audacity audacious banshee
+    audacity audacious banshee \
+    --fix-missing --fix-broken
 ```
 
 ---
@@ -568,13 +570,21 @@ sudo apt -y install \
 
 ```bash
 sudo apt -y install \
-    zsnes pcsxr pcsx2 mame
+    zsnes pcsxr pcsx2 mame \
+    --fix-missing --fix-broken
 ```
 
 > _NOTE: The BIOS will be uploaded in this repository in a future commit_
 
-# Office Suite
+---
+
+####  Office Suite
 
 ```bash
-sudo apt -y install libreoffice
+sudo apt -y install libreoffice \
+    --fix-missing --fix-broken
 ```
+
+## Done
+
+That's all folks :D
