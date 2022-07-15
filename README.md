@@ -104,9 +104,9 @@ sudo cp -rv lato monaco open-sans /usr/share/fonts/truetype/
 #### From Ubuntu Software Repositories
 
 ```bash
-sudo apt -y install python3-pip git-all jq shutter vlc parole \
+sudo apt -y install python3-pip git-all jq \
     gparted macchanger solaar soundconverter httpie \
-    meld filezilla cutecom \
+    meld filezilla cutecom tree htpop \
     --fix-missing --fix-broken
 ```
 
@@ -470,6 +470,27 @@ The Eclipse PHP IDE installation is similar to Postman instructions above.
     ```
     > _The `make` process will take a lot of time so be patient and drink a coffe_
 
+**Bashtop**
+
+* Download source code from [`https://github.com/aristocratos/bashtop`](https://github.com/aristocratos/bashtop)
+
+```bash
+git clone https://github.com/aristocratos/bashtop.git
+```
+
+* Copy to library directory
+
+```bash
+sudo mv bashtop /usr/local/lib/
+```
+
+* Install
+
+```bash
+cd /usr/local/lib/bashtop \
+&& sudo make install
+```
+
 ---
 
 #### Installing NodeJS Global Dependencies
@@ -527,6 +548,50 @@ command:
 sudo mysqladmin -u root -h host_name password "${MYSQL_SERVER_PASSWORD}"
 ```
 
+**Install Composer**
+
+To install composer just need to use the following commands
+
+> _NOTE: We recommend to continuously check for composer updates at [`https://getcomposer.org`](https://getcomposer.org)_
+
+1. Download and compile
+
+    ```bash
+    php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+    php -r "if (hash_file('sha384', 'composer-setup.php') === '55ce33d7678c5a611085589f1f3ddf8b3c52d662cd01d4ba75c0ee0459970c2200a51f492d557530c71c15d8dba01eae') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
+    php composer-setup.php
+    php -r "unlink('composer-setup.php');"
+    ```
+
+    After that you will have a file ready to be installed in `$(pwd)/composer.phar`
+
+2. Move to library directory
+
+    - _Get composer version_
+
+        To get the composer version you will install just execute the following line
+
+        ```bash
+        ./composer.phar --version
+        ```
+
+    - _Move file to library_
+
+        ```bash
+        sudo mkdir /usr/local/lib/composer/composer-${COMPOSER_VERSION} \
+        && mv composer.phar /usr/local/lib/composer/composer-${COMPOSER_VERSION}
+        ```
+
+        > _NOTE: `COMPOSER_VERSION` is the version obtained in "Get composer version" section_
+
+3. Link to system binaries
+
+    ```bash
+    ln -s /usr/local/lib/composer/composer-${COMPOSER_VERSION}/composer.phar \
+        /usr/bin/composer
+    ```
+
+**Test it**
 After all above steps the server has started working, to test just send the
 following request:
 
@@ -550,7 +615,8 @@ http --follow 'http://localhost'
 
 ```
 sudo apt -y install \
-    pitivi gimp inkscape obs-studio cheese handbrake \
+    pitivi gimp inkscape obs-studio cheese
+    handbrake vlc parole shutter \
     --fix-missing --fix-broken
 ```
 
@@ -581,7 +647,7 @@ sudo apt -y install \
 ####  Office Suite
 
 ```bash
-sudo apt -y install libreoffice \
+sudo apt -y install libreoffice texlive-full \
     --fix-missing --fix-broken
 ```
 
