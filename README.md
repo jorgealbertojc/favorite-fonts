@@ -65,7 +65,7 @@ sudo apt -y install gnome-shell-extensions gnome-shell-extension-prefs gnome-twe
 
 ```bash
 curl --location --show-error --silent --request GET \
-    --url 'https://github.com/jorgealbertojc/thinks-todo-after-install-ubuntu/raw/master/fonts/lato.zip' \
+    --url 'https://github.com/jorgealbertojc/things-todo-after-install-ubuntu/raw/master/fonts/lato.zip' \
     --output lato.zip --write-out '%{http_code}'
 ```
 
@@ -73,7 +73,7 @@ curl --location --show-error --silent --request GET \
 
 ```bash
 curl --location --show-error --silent --request GET \
-    --url 'https://github.com/jorgealbertojc/thinks-todo-after-install-ubuntu/raw/master/fonts/monaco.zip' \
+    --url 'https://github.com/jorgealbertojc/things-todo-after-install-ubuntu/raw/master/fonts/monaco.zip' \
     --output lato.zip --write-out '%{http_code}'
 ```
 
@@ -81,7 +81,7 @@ curl --location --show-error --silent --request GET \
 
 ```bash
 curl --location --show-error --silent --request GET \
-    --url 'https://github.com/jorgealbertojc/thinks-todo-after-install-ubuntu/raw/master/fonts/open-sans.zip' \
+    --url 'https://github.com/jorgealbertojc/things-todo-after-install-ubuntu/raw/master/fonts/open-sans.zip' \
     --output lato.zip --write-out '%{http_code}'
 ```
 
@@ -89,8 +89,8 @@ curl --location --show-error --silent --request GET \
 
 ```bash
 unzip lato.zip -d lato \
-    && unzip monaco.zip -d monaco \
-    && unzip open-sans.zip -d open-sans
+&& unzip monaco.zip -d monaco \
+&& unzip open-sans.zip -d open-sans
 ```
 
 **Install Favorite Fonts**
