@@ -1,27 +1,23 @@
-### Entertainment and Visual Design
+# Entertainment and Visual Design
 
-#### Video and Image Manipulators
-
-```
-sudo apt -y install \
-    pitivi gimp inkscape obs-studio cheese
-    handbrake vlc parole shutter \
-    --fix-missing --fix-broken
-```
-
----
-
-#### Music and Sound Manipulators
+## Install Video and Image Manipulators and Viewers
 
 ```bash
 sudo apt -y install \
-    audacity audacious banshee \
+    pitivi gimp inkscape obs-studio cheese
+    handbrake vlc parole shutter smplayer \
     --fix-missing --fix-broken
 ```
 
----
+## Install Music and Sound Manipulators
 
-#### Gaming
+```bash
+sudo apt -y install \
+    audacity audacious \
+    --fix-missing --fix-broken
+```
+
+## Install Gaming Emulators and Players
 
 ```bash
 sudo apt -y install \
@@ -29,13 +25,12 @@ sudo apt -y install \
     --fix-missing --fix-broken
 ```
 
-> _NOTE: The BIOS will be uploaded in this repository in a future commit_
+> _NOTE: package `zsnes` does not exists in ElementaryOS_
 
----
-
-####  Office Suite
+## Install Office Suite
 
 ```bash
-sudo apt -y install libreoffice texlive-full \
+sudo apt -y install texlive-full texlive-xetex \
+    libreoffice libreoffice-l10n-es \
     --fix-missing --fix-broken
 ```
