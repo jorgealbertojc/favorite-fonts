@@ -1,24 +1,21 @@
-### Required Work/Development Software
+# Work/Development Software
 
-#### From Ubuntu Software Repositories
+## From Oficial Repositories
 
 ```bash
 sudo apt -y install python3-pip git-all jq \
     gparted macchanger solaar soundconverter httpie \
-    meld filezilla cutecom tree htpop \
+    meld filezilla cutecom tree htpop terminator \
     --fix-missing --fix-broken
 ```
 
----
-
-#### From Downloaded DEB Packages
+## From Downloaded DEB Packages
 
 All these packages can be installed by executing the following command
 
 ```bash
 sudo apt -y install /path/to/package.deb --fix-missing --fix-broken
 ```
-
 **Recommended Browsers**
 
 - Opera Browser ([`https://www.opera.com`](https://www.opera.com))
@@ -30,10 +27,12 @@ sudo apt -y install /path/to/package.deb --fix-missing --fix-broken
 
 - Mailspring ([`https://getmailspring.com`](https://getmailspring.com))
 
-**Text Editors**
+**Text/Code Editors**
 
 - VS Code ([`https://code.visualstudio.com`](https://code.visualstudio.com))
-- VS Codium ([`https://vscodium.com`](https://vscodium.com))
+- Atom ([`https://atom.io`](https://atom.io))
+
+    > _NOTE: Keep in mind that Atom will be archived on December 15, 2022_
 
 **MySQL**
 
@@ -52,7 +51,6 @@ sudo apt -y install /path/to/package.deb --fix-missing --fix-broken
 
     ```bash
     # vi /etc/bash.bashrc
-
     export JAVA_HOME=/path/to/your/java/installation
     export PATH=${PATH}:${JAVA_HOME}/bin
     ```
@@ -60,7 +58,7 @@ sudo apt -y install /path/to/package.deb --fix-missing --fix-broken
     Commonly java installation is in the directory
 
     ```bash
-    /usr/lib/jvm/jdk-${YOUR_JAVA_VERSION}
+    /usr/lib/jvm/jdk-${YOUR_FAVORITE_JAVA_VERSION}
     ```
 
     Finally just load the updates in your console (_you can reboot your computer for better results_):
@@ -76,9 +74,31 @@ sudo apt -y install /path/to/package.deb --fix-missing --fix-broken
     java --version
     ```
 
----
+## From Alternative PPA Repositories
 
-#### From Alternative Repositories
+* _**VS Codium**_
+
+    Add GPG Key
+
+    ```bash
+    wget -qO - https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/master/pub.gpg \
+        | gpg --dearmor \
+        | sudo dd of=/usr/share/keyrings/vscodium-archive-keyring.gpg
+    ```
+
+    Add VSCodium source list
+
+    ```bash
+    echo 'deb [ signed-by=/usr/share/keyrings/vscodium-archive-keyring.gpg ] https://download.vscodium.com/debs vscodium main' \
+        | sudo tee /etc/apt/sources.list.d/vscodium.list
+    ```
+
+    Install it
+
+    ```bash
+    sudo apt update \
+    && sudo apt install codium
+    ```
 
 * _**SublimeText**_
 
@@ -153,19 +173,16 @@ sudo apt -y install /path/to/package.deb --fix-missing --fix-broken
     && sudo apt -y install audio-recorder
     ```
 
----
-
-#### From PIP Repositories
+## From PIP3 Repositories
 
 ```bash
-pip3 install cqlsh ansible yq \
-    openshift openstack \
-    docker-compose
+sudo pip3 install cqlsh ansible yq openshift docker-compose \
+    openstacksdk python-openstackclient python-novaclient \
+    python-neutronclient python-cinderclient \
+    python-glanceclient
 ```
 
----
-
-#### From Downloaded Binaries
+## From Downloaded Binaries
 
 **GoLang**
 
@@ -291,7 +308,7 @@ pip3 install cqlsh ansible yq \
 * Run with terminal to install it
 
     ```bash
-    /opt/telegram/Telegram
+    /opt/Telegram/Telegram
     ```
 
     After that a initial window will shown on your screen, just close it and the
@@ -339,9 +356,8 @@ The Eclipse PHP IDE installation is similar to Postman instructions above.
         /usr/share/applications/eclipse-php.desktop
     ```
 
----
 
-#### Building From Sources
+## Building Stright From Sources
 
 **NodeJS**
 
@@ -373,49 +389,45 @@ The Eclipse PHP IDE installation is similar to Postman instructions above.
 
 * Download source code from [`https://github.com/aristocratos/bashtop`](https://github.com/aristocratos/bashtop)
 
-```bash
-git clone https://github.com/aristocratos/bashtop.git
-```
+    ```bash
+    git clone https://github.com/aristocratos/bashtop.git
+    ```
 
 * Copy to library directory
 
-```bash
-sudo mv bashtop /usr/local/lib/
-```
+    ```bash
+    sudo mv bashtop /usr/local/lib/
+    ```
 
 * Install
 
-```bash
-cd /usr/local/lib/bashtop \
-&& sudo make install
-```
+    ```bash
+    cd /usr/local/lib/bashtop \
+    && sudo make install
+    ```
 
----
-
-#### Installing NodeJS Global Dependencies
+## NodeJS Global Dependencies
 
 This dependencies are installed with the `npm` command:
 
 ```bash
 sudo npm install -g \
-    bower yarn grunt-cli markserv
+    bower yarn grunt-cli markserv sass
 ```
 
----
-
-#### Web Development
+## Web Development Software
 
 > _*NOTE*: For the current developments we need to install `php7.2`_
 
 **Install PPA Repositories**
 
-Install PHP PPA
+_Install PHP PPA_
 
 ```bash
 sudo add-apt-repository ppa:ondrej/php -y
 ```
 
-Install Apache2 PPA
+_Install Apache2 PPA (<u>only for Ubuntu22.04 in ElementaryOS just install PHP PPA</u>)_
 
 ```bash
 sudo add-apt-repository ppa:ondrej/apache2 -y
@@ -437,7 +449,16 @@ sudo apt -y update --fix-missing \
     mysql-server
 ```
 
-**Setup MySQL Username and Password**
+_Enable Apache2 Modules_
+
+```bash
+sudo a2enmod \
+    access_compat actions alias allowmethods auth_basic autoindex \
+    buffer cache cgi data dialup dir echo env headers include ldap \
+    mime_magic proxy proxy_* request rewrite userdir vhost_alias xml2enc
+```
+
+**MySQL Usernames and Passwords**
 
 In more recently MySQL server the things works something diferent, now needs the
 sudo power to set the MySQL root password, so, just execute the following
@@ -447,7 +468,7 @@ command:
 sudo mysqladmin -u root -h host_name password "${MYSQL_SERVER_PASSWORD}"
 ```
 
-**Install Composer**
+**Install Composer Package Manager**
 
 To install composer just need to use the following commands
 
@@ -482,7 +503,6 @@ To install composer just need to use the following commands
         ```
 
         > _NOTE: `COMPOSER_VERSION` is the version obtained in "Get composer version" section_
-
 3. Link to system binaries
 
     ```bash
@@ -491,13 +511,16 @@ To install composer just need to use the following commands
     ```
 
 **Test it**
+
 After all above steps the server has started working, to test just send the
 following request:
 
 ```
 curl --location --silent --show-error \
     --request GET \
-    --url 'http://localhost'
+    --url 'http://localhost' \
+    --output /dev/null \
+    --write-out '%{http_code}\n'
 ```
 
 or
@@ -506,4 +529,22 @@ or
 http --follow 'http://localhost'
 ```
 
----
+## Install Ultimate VIM Configuration
+
+1. Download
+
+    ```bash
+    git clone --depth=1 https://github.com/amix/vimrc.git ${HOME}/.vim_runtime
+    ```
+
+1. Install it
+
+    ```bash
+    sh ${HOME}/.vim_runtime/install_awesome_vimrc.sh
+    ```
+
+1. Configure Line Numbers
+
+    ```bash
+    echo -n "\nset number\n\n" >> ${HOME}/.vimrc
+    ```
