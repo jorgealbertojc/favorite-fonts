@@ -1,20 +1,21 @@
-### Required OS Software
+# Required OS Software
 
-#### Before you install anything:
+## Set ROOT User Password
 
-First of all, update `sources.list` with the following command:
+```bash
+sudo passwd root
+```
+
+## Before Install Anything Else (only ubuntu)
+
+> _NOTE: This step is only for Ubuntu 22.04, if you try this on ElementaryOS you
+> will uncomment the DEB files from CD but you'll not have never the eos CD_
 
 ```bash
 sudo sed 's/# deb/deb/g' /etc/apt/sources.list -i
 ```
 
-The command above will update `sources.list` file to activate `deb-src` repositories
-
----
-
-#### Then update/upgrade pre-installed packages
-
-After `sources.list` update, just install the pre-installed packages updates.
+## Update/Upgrade Pre-Installed Packages
 
 ```bash
 sudo apt -y update --fix-missing \
@@ -25,65 +26,64 @@ sudo apt -y update --fix-missing \
 && sudo apt -y autoremove
 ```
 
----
-
-#### Set Root Password
-
-```bash
-sudo passwd root
-```
-
----
-
-#### Install OS Requirements
-
-This will install `make`, `gcc`, `g++` and other required software to compile and build binaries/packages
+## Install OS Base Software
 
 ```bash
 sudo apt -y install vim ubuntu-restricted-* build-essential \
-    net-tools network-manager \
-    linux-headers-$(uname -r) \
+    net-tools network-manager lm-sensors nmap \
+    linux-headers-$(uname -r) software-properties-common \
     gconf2 dconf-editor macchanger pavucontrol pulseaudio \
-    libdvdread8 p7zip-full unace unzip file-roller atool
+    libdvdread8 p7zip-full unace unzip file-roller atool rar
 ```
 
----
+## Install Tweaks
 
-#### Install Gnome Shell Extensions and Tweaks
+### For Ubuntu
 
 ```bash
-sudo apt -y install gnome-shell-extensions gnome-shell-extension-prefs gnome-tweaks
+sudo apt -y install \
+    gnome-shell-extensions gnome-shell-extension-prefs gnome-tweaks
 ```
 
----
+### For ElementaryOS
 
-#### Install Favorite Fonts
+```bash
+sudo add-apt-repository -y ppa:philip.scott/pantheon-tweaks \
+&& sudo apt -y update --fix-msising \
+&& sudo apt install pantheon-tweaks
+```
 
-**Download Lato Font**
+## Install Favorite Fonts
+
+### Download Fonts
+
+**Lato Font**
 
 ```bash
 curl --location --show-error --silent --request GET \
     --url 'https://github.com/jorgealbertojc/things-todo-after-install-ubuntu/raw/master/fonts/lato.zip' \
-    --output lato.zip --write-out '%{http_code}'
+    --write-out '%{http_code}' --output lato.zip
 ```
 
-**Download Monaco Monospaced Font**
+**Monaco Monospaced Font**
 
 ```bash
 curl --location --show-error --silent --request GET \
     --url 'https://github.com/jorgealbertojc/things-todo-after-install-ubuntu/raw/master/fonts/monaco.zip' \
-    --output lato.zip --write-out '%{http_code}'
+    --write-out '%{http_code}' --output monaco.zip
 ```
 
-**Download Open Sans Font**
+**Open Sans Font**
 
 ```bash
 curl --location --show-error --silent --request GET \
     --url 'https://github.com/jorgealbertojc/things-todo-after-install-ubuntu/raw/master/fonts/open-sans.zip' \
-    --output lato.zip --write-out '%{http_code}'
+    --write-out '%{http_code}' --output open-sans.zip
 ```
 
-**Decompress ZIP Files**
+### Decompress and Install it
+
+**Decompres**
 
 ```bash
 unzip lato.zip -d lato \
@@ -91,8 +91,8 @@ unzip lato.zip -d lato \
 && unzip open-sans.zip -d open-sans
 ```
 
-**Install Favorite Fonts**
+**Install**
 
 ```bash
-sudo cp -rv lato monaco open-sans /usr/share/fonts/truetype/
+sudo mv lato monaco open-sans /usr/share/fonts/truetype/
 ```
