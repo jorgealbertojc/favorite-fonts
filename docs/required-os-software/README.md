@@ -26,6 +26,15 @@ sudo apt -y update --fix-missing \
 && sudo apt -y autoremove
 ```
 
+## Configure PS1 Terminal Prompt Design
+
+On file `${HOME}/.bashrc`
+
+```bash
+# generated on https://bashrcgenerator.com/
+export PS1="\[\e[00;37m\]\n\[\e[0m\]\[\e[00;33m\][\[\e[0m\]\[\e[00;34m\]\w\[\e[0m\]\[\e[00;33m\]]\[\e[0m\]\[\e[00;37m\]\n\[\e[0m\]\[\e[01;32m\]\u\[\e[0m\]\[\e[01;33m\]@\[\e[0m\]\[\e[01;32m\]\h\[\e[0m\]\[\e[00;34m\]:\[\e[0m\]\[\e[00;31m\]\\$\[\e[0m\]\[\e[00;37m\] \[\e[0m\]"
+```
+
 ## Install OS Base Software
 
 ```bash
