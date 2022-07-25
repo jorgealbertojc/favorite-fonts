@@ -5,7 +5,7 @@
 ```bash
 sudo apt -y install python3-pip git-all jq \
     gparted macchanger solaar soundconverter httpie \
-    meld filezilla cutecom tree htpop \
+    meld filezilla cutecom tree htpop terminator \
     --fix-missing --fix-broken
 ```
 
@@ -412,7 +412,7 @@ This dependencies are installed with the `npm` command:
 
 ```bash
 sudo npm install -g \
-    bower yarn grunt-cli markserv
+    bower yarn grunt-cli markserv sass
 ```
 
 ## Web Development Software
@@ -528,3 +528,23 @@ or
 ```
 http --follow 'http://localhost'
 ```
+
+## Install Ultimate VIM Configuration
+
+1. Download
+
+    ```bash
+    git clone --depth=1 https://github.com/amix/vimrc.git ${HOME}/.vim_runtime
+    ```
+
+1. Install it
+
+    ```bash
+    sh ${HOME}/.vim_runtime/install_awesome_vimrc.sh
+    ```
+
+1. Configure Line Numbers
+
+    ```bash
+    echo -n "\nset number\n\n" >> ${HOME}/.vimrc
+    ```
