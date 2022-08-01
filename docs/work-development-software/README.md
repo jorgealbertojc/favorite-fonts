@@ -5,7 +5,7 @@
 ```bash
 sudo apt -y install python3-pip git-all jq \
     gparted macchanger solaar soundconverter httpie \
-    meld filezilla cutecom tree htpop terminator \
+    meld filezilla cutecom tree htop terminator \
     --fix-missing --fix-broken
 ```
 
