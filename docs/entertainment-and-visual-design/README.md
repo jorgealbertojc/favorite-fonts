@@ -4,7 +4,7 @@
 
 ```bash
 sudo apt -y install \
-    pitivi gimp inkscape obs-studio cheese
+    pitivi gimp inkscape obs-studio cheese \
     handbrake vlc parole shutter smplayer \
     --fix-missing --fix-broken
 ```
@@ -25,7 +25,7 @@ sudo apt -y install \
     --fix-missing --fix-broken
 ```
 
-> _NOTE: package `zsnes` does not exists in ElementaryOS_
+> _NOTE: package `zsnes` and `pcsx2` does not exists in ElementaryOS_
 
 ## Install Office Suite
 
