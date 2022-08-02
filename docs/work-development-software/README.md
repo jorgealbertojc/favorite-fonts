@@ -174,6 +174,35 @@ sudo apt -y install /path/to/package.deb --fix-missing --fix-broken
     && sudo apt -y install audio-recorder
     ```
 
+* _**Brave Browser**_
+
+    Install Brave Browser Dependencies
+
+    ```bash
+    sudo apt install apt-transport-https curl
+    ```
+
+    Add Brave Browser Official GPG key
+
+    ```bash
+    sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg \
+        https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
+    ```
+
+    Setup Repository
+
+    ```bash
+    echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg arch=amd64] https://brave-browser-apt-release.s3.brave.com/ stable main" \
+        | sudo tee /etc/apt/sources.list.d/brave-browser-release.list
+    ```
+
+    Install it
+
+    ```bash
+    sudo apt -y update --fix-missing \
+    && sudo apt -y install brave-browser --fix-missing --fix-broken
+    ```
+
 ## From PIP3 Repositories
 
 ```bash
