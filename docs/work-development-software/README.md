@@ -608,5 +608,20 @@ To install composer just need to use the following commands
 1. Configure Line Numbers
 
     ```bash
-    echo -n "\nset number\n\n" >> ${HOME}/.vimrc
+    echo -e "\nset number\n" >> ${HOME}/.vimrc
     ```
+1. Install it on root user
+
+    - First switch to root user account
+
+        ```bash
+        sudo su -
+        ```
+
+    - Download and install ultimate vim configuration
+
+        ```bash
+        git clone --depth=1 https://github.com/amix/vimrc.git ${HOME}/.vim_runtime \
+        && sh ${HOME}/.vim_runtime/install_awesome_vimrc.sh \
+        && echo -e "\nset number\n" >> ${HOME}/.vimrc
+        ```
