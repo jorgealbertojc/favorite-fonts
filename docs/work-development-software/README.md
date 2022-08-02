@@ -149,12 +149,13 @@ sudo apt -y install /path/to/package.deb --fix-missing --fix-broken
         | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
     ```
 
-    Setup repository
+    Setup repository (_ubuntu only_)
 
     ```bash
     echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" \
         | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
     ```
+    > _NOTE: for ElementaryOS is required to use the ubuntu code name instead of command `lsb_release -cs` or in the contrary a 404 error will shown on `apt update`_
 
     Install it
 
@@ -499,14 +500,14 @@ To install composer just need to use the following commands
 
         ```bash
         sudo mkdir /usr/local/lib/composer/composer-${COMPOSER_VERSION} \
-        && mv composer.phar /usr/local/lib/composer/composer-${COMPOSER_VERSION}
+        && sudo mv composer.phar /usr/local/lib/composer/composer-${COMPOSER_VERSION}
         ```
 
         > _NOTE: `COMPOSER_VERSION` is the version obtained in "Get composer version" section_
 3. Link to system binaries
 
     ```bash
-    ln -s /usr/local/lib/composer/composer-${COMPOSER_VERSION}/composer.phar \
+    sudo ln -s /usr/local/lib/composer/composer-${COMPOSER_VERSION}/composer.phar \
         /usr/bin/composer
     ```
 
