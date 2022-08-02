@@ -459,6 +459,54 @@ sudo a2enmod \
     mime_magic proxy proxy_* request rewrite userdir vhost_alias xml2enc
 ```
 
+After enabling apache modules is required to configure userdir.conf file, to do
+this just update the module configuration with the following contents:
+
+```apache
+# sudo vi /etc/apache2/mods-available/userdir.conf
+<IfModule mod_userdir.c>
+    UserDir Public
+    UserDir disabled root
+
+    <Directory /home/*/Public>
+        AllowOverride All
+        Options MultiViews Indexes SymLinksIfOwnerMatch IncludesNoExec
+        allow from all
+        Require all granted
+    </Directory>
+</IfModule>
+```
+
+Then add the user `www-data` to your own user group with the following command
+
+```bash
+sudo adduser www-data $(whoami)
+```
+
+Restart apache2 services and your installation will show you following answer:
+
+```bash
+sudo systemctl daemon-reload \
+&& sudo systemctl reload apache2 \
+&& sudo systemctl restart apache2
+```
+
+- Check your localhost to answer with status `200`
+
+    ```bash
+    curl --location --silent --show-error --request GET --url "http://localhost" \
+        --output /dev/null --write-out '%{http_code}\n'
+    ```
+
+- Check your userdir to answer with status `200`
+
+    ```bash
+    curl --location --silent --show-error --request GET --url "http://localhost/~$(whoami)" \
+        --output /dev/null --write-out '%{http_code}\n'
+    ```
+
+> _If you get a forbidden response repeat steps to activate modules, restart apache and setup permissions_
+
 **MySQL Usernames and Passwords**
 
 In more recently MySQL server the things works something diferent, now needs the
@@ -466,7 +514,7 @@ sudo power to set the MySQL root password, so, just execute the following
 command:
 
 ```bash
-sudo mysqladmin -u root -h host_name password "${MYSQL_SERVER_PASSWORD}"
+sudo mysqladmin -h 127.0.0.1 -u root password <YOUR_PREFERRED_MYSQL_PASSWORD>
 ```
 
 **Install Composer Package Manager**
@@ -510,25 +558,6 @@ To install composer just need to use the following commands
     sudo ln -s /usr/local/lib/composer/composer-${COMPOSER_VERSION}/composer.phar \
         /usr/bin/composer
     ```
-
-**Test it**
-
-After all above steps the server has started working, to test just send the
-following request:
-
-```
-curl --location --silent --show-error \
-    --request GET \
-    --url 'http://localhost' \
-    --output /dev/null \
-    --write-out '%{http_code}\n'
-```
-
-or
-
-```
-http --follow 'http://localhost'
-```
 
 ## Install Ultimate VIM Configuration
 
