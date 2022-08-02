@@ -441,9 +441,12 @@ The Eclipse PHP IDE installation is similar to Postman instructions above.
 This dependencies are installed with the `npm` command:
 
 ```bash
-sudo npm install -g \
-    bower yarn grunt-cli markserv sass
+sudo npm install --location=global \
+    bower yarn grunt-cli markserv sass \
+    --no-fund --no-audit
 ```
+
+> _NOTE: `nodejs-v16.16-lts` is used in this installation_
 
 ## Web Development Software
 
