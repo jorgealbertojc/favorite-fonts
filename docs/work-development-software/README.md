@@ -5,7 +5,7 @@
 ```bash
 sudo apt -y install python3-pip git-all jq \
     gparted macchanger solaar soundconverter httpie \
-    meld filezilla cutecom tree htpop terminator \
+    meld filezilla cutecom tree htop terminator \
     --fix-missing --fix-broken
 ```
 
@@ -149,12 +149,13 @@ sudo apt -y install /path/to/package.deb --fix-missing --fix-broken
         | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
     ```
 
-    Setup repository
+    Setup repository (_ubuntu only_)
 
     ```bash
     echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" \
         | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
     ```
+    > _NOTE: for ElementaryOS is required to use the ubuntu code name instead of command `lsb_release -cs` or in the contrary a 404 error will shown on `apt update`_
 
     Install it
 
@@ -171,6 +172,35 @@ sudo apt -y install /path/to/package.deb --fix-missing --fix-broken
     sudo add-apt-repository ppa:audio-recorder/ppa -y \
     && sudo apt update \
     && sudo apt -y install audio-recorder
+    ```
+
+* _**Brave Browser**_
+
+    Install Brave Browser Dependencies
+
+    ```bash
+    sudo apt install apt-transport-https curl
+    ```
+
+    Add Brave Browser Official GPG key
+
+    ```bash
+    sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg \
+        https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
+    ```
+
+    Setup Repository
+
+    ```bash
+    echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg arch=amd64] https://brave-browser-apt-release.s3.brave.com/ stable main" \
+        | sudo tee /etc/apt/sources.list.d/brave-browser-release.list
+    ```
+
+    Install it
+
+    ```bash
+    sudo apt -y update --fix-missing \
+    && sudo apt -y install brave-browser --fix-missing --fix-broken
     ```
 
 ## From PIP3 Repositories
@@ -411,9 +441,12 @@ The Eclipse PHP IDE installation is similar to Postman instructions above.
 This dependencies are installed with the `npm` command:
 
 ```bash
-sudo npm install -g \
-    bower yarn grunt-cli markserv sass
+sudo npm install --location=global \
+    bower yarn grunt-cli markserv sass \
+    --no-fund --no-audit
 ```
+
+> _NOTE: `nodejs-v16.16-lts` is used in this installation_
 
 ## Web Development Software
 
@@ -458,6 +491,54 @@ sudo a2enmod \
     mime_magic proxy proxy_* request rewrite userdir vhost_alias xml2enc
 ```
 
+After enabling apache modules is required to configure userdir.conf file, to do
+this just update the module configuration with the following contents:
+
+```apache
+# sudo vi /etc/apache2/mods-available/userdir.conf
+<IfModule mod_userdir.c>
+    UserDir Public
+    UserDir disabled root
+
+    <Directory /home/*/Public>
+        AllowOverride All
+        Options MultiViews Indexes SymLinksIfOwnerMatch IncludesNoExec
+        allow from all
+        Require all granted
+    </Directory>
+</IfModule>
+```
+
+Then add the user `www-data` to your own user group with the following command
+
+```bash
+sudo adduser www-data $(whoami)
+```
+
+Restart apache2 services and your installation will show you following answer:
+
+```bash
+sudo systemctl daemon-reload \
+&& sudo systemctl reload apache2 \
+&& sudo systemctl restart apache2
+```
+
+- Check your localhost to answer with status `200`
+
+    ```bash
+    curl --location --silent --show-error --request GET --url "http://localhost" \
+        --output /dev/null --write-out '%{http_code}\n'
+    ```
+
+- Check your userdir to answer with status `200`
+
+    ```bash
+    curl --location --silent --show-error --request GET --url "http://localhost/~$(whoami)" \
+        --output /dev/null --write-out '%{http_code}\n'
+    ```
+
+> _If you get a forbidden response repeat steps to activate modules, restart apache and setup permissions_
+
 **MySQL Usernames and Passwords**
 
 In more recently MySQL server the things works something diferent, now needs the
@@ -465,7 +546,7 @@ sudo power to set the MySQL root password, so, just execute the following
 command:
 
 ```bash
-sudo mysqladmin -u root -h host_name password "${MYSQL_SERVER_PASSWORD}"
+sudo mysqladmin -h 127.0.0.1 -u root password <YOUR_PREFERRED_MYSQL_PASSWORD>
 ```
 
 **Install Composer Package Manager**
@@ -499,35 +580,16 @@ To install composer just need to use the following commands
 
         ```bash
         sudo mkdir /usr/local/lib/composer/composer-${COMPOSER_VERSION} \
-        && mv composer.phar /usr/local/lib/composer/composer-${COMPOSER_VERSION}
+        && sudo mv composer.phar /usr/local/lib/composer/composer-${COMPOSER_VERSION}
         ```
 
         > _NOTE: `COMPOSER_VERSION` is the version obtained in "Get composer version" section_
 3. Link to system binaries
 
     ```bash
-    ln -s /usr/local/lib/composer/composer-${COMPOSER_VERSION}/composer.phar \
+    sudo ln -s /usr/local/lib/composer/composer-${COMPOSER_VERSION}/composer.phar \
         /usr/bin/composer
     ```
-
-**Test it**
-
-After all above steps the server has started working, to test just send the
-following request:
-
-```
-curl --location --silent --show-error \
-    --request GET \
-    --url 'http://localhost' \
-    --output /dev/null \
-    --write-out '%{http_code}\n'
-```
-
-or
-
-```
-http --follow 'http://localhost'
-```
 
 ## Install Ultimate VIM Configuration
 
@@ -546,5 +608,20 @@ http --follow 'http://localhost'
 1. Configure Line Numbers
 
     ```bash
-    echo -n "\nset number\n\n" >> ${HOME}/.vimrc
+    echo -e "\nset number\n" >> ${HOME}/.vimrc
     ```
+1. Install it on root user
+
+    - First switch to root user account
+
+        ```bash
+        sudo su -
+        ```
+
+    - Download and install ultimate vim configuration
+
+        ```bash
+        git clone --depth=1 https://github.com/amix/vimrc.git ${HOME}/.vim_runtime \
+        && sh ${HOME}/.vim_runtime/install_awesome_vimrc.sh \
+        && echo -e "\nset number\n" >> ${HOME}/.vimrc
+        ```
