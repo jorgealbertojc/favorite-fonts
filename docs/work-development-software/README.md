@@ -14,7 +14,8 @@ sudo apt -y install python3-pip git-all jq \
 All these packages can be installed by executing the following command
 
 ```bash
-sudo apt -y install /path/to/package.deb --fix-missing --fix-broken
+sudo apt -y install /path/to/package.deb \
+    --fix-missing --fix-broken
 ```
 **Recommended Browsers**
 
@@ -96,8 +97,9 @@ sudo apt -y install /path/to/package.deb --fix-missing --fix-broken
     Install it
 
     ```bash
-    sudo apt update \
-    && sudo apt install codium
+    sudo apt -y update --fix-missing \
+    && sudo apt install codium \
+        --fix-missing --fix-broken
     ```
 
 * _**SublimeText**_
@@ -120,8 +122,8 @@ sudo apt -y install /path/to/package.deb --fix-missing --fix-broken
     Install it
 
     ```bash
-    sudo apt-get update \
-    && sudo apt-get install sublime-text
+    sudo apt -y update --fix-missing \
+    && sudo apt install sublime-text
     ```
 
 
@@ -130,14 +132,14 @@ sudo apt -y install /path/to/package.deb --fix-missing --fix-broken
     Remove old versions
 
     ```bash
-    sudo apt-get remove docker docker-engine docker.io containerd runc
+    sudo apt remove docker docker-engine docker.io containerd runc
     ```
 
     Install Docker dependencies
 
     ```
-    sudo apt-get update \
-    && sudo apt-get install ca-certificates curl \
+    sudo apt -y update --fix-missing \
+    && sudo apt install ca-certificates curl \
         gnupg lsb-release
     ```
 
@@ -160,8 +162,8 @@ sudo apt -y install /path/to/package.deb --fix-missing --fix-broken
     Install it
 
     ```bash
-    sudo apt-get update \
-    && sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin
+    sudo apt -y update --fix-missing \
+    && sudo apt install docker-ce docker-ce-cli containerd.io docker-compose-plugin
     ```
 
 * _**Audio Recorder**_
@@ -170,8 +172,9 @@ sudo apt -y install /path/to/package.deb --fix-missing --fix-broken
 
     ```bash
     sudo add-apt-repository ppa:audio-recorder/ppa -y \
-    && sudo apt update \
-    && sudo apt -y install audio-recorder
+    && sudo apt -y update --fix-missing \
+    && sudo apt -y install audio-recorder \
+        --fix-missing --fix-broken
     ```
 
 * _**Brave Browser**_
@@ -179,7 +182,8 @@ sudo apt -y install /path/to/package.deb --fix-missing --fix-broken
     Install Brave Browser Dependencies
 
     ```bash
-    sudo apt install apt-transport-https curl
+    sudo apt install apt-transport-https curl \
+        --fix-missing --fix-broken
     ```
 
     Add Brave Browser Official GPG key
@@ -200,7 +204,8 @@ sudo apt -y install /path/to/package.deb --fix-missing --fix-broken
 
     ```bash
     sudo apt -y update --fix-missing \
-    && sudo apt -y install brave-browser --fix-missing --fix-broken
+    && sudo apt -y install brave-browser \
+        --fix-missing --fix-broken
     ```
 
 ## From PIP3 Repositories
@@ -479,7 +484,8 @@ sudo apt -y update --fix-missing \
         php7.2-pgsql php7.2-smbclient php7.2-sqlite3 php7.2-tidy \
         php7.2-uploadprogress php7.2-uuid php7.2-xdebug php7.2-xml \
         php7.2-xmlrpc php7.2-xsl php7.2-yaml php7.2-zip \
-    mysql-server
+    mysql-server \
+    --fix-missing --fix-broken
 ```
 
 _Enable Apache2 Modules_
