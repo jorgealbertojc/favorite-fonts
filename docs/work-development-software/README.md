@@ -6,6 +6,7 @@
 sudo apt -y install python3-pip git-all jq \
     gparted macchanger solaar soundconverter httpie \
     meld filezilla cutecom tree htop terminator \
+    chromium-browser chromium-browser-l10n \
     --fix-missing --fix-broken
 ```
 
@@ -20,7 +21,6 @@ sudo apt -y install /path/to/package.deb \
 **Recommended Browsers**
 
 - Opera Browser ([`https://www.opera.com`](https://www.opera.com))
-- Chromium Browser ([`https://www.chromium.org`](https://www.chromium.org/getting-involved/download-chromium/))
 - Chrome Browser ([`https://www.google.com`](https://www.google.com/chrome/))
 - Vivaldi Browser ([`https://vivaldi.com`](https://vivaldi.com/))
 
