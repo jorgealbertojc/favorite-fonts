@@ -552,7 +552,7 @@ sudo power to set the MySQL root password, so, just execute the following
 command:
 
 ```bash
-sudo mysqladmin -h 127.0.0.1 -u root password <YOUR_PREFERRED_MYSQL_PASSWORD>
+sudo mysqladmin --user root password <YOUR_PREFERRED_MYSQL_PASSWORD>
 ```
 
 **Install Composer Package Manager**
