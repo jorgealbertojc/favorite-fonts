@@ -1,6 +1,30 @@
 <!-- <a name="unreleased"></a>
 [Unreleased]
 -->
+<a name="1.0.2"></a>
+## `[1.0.2]` - 2022-08-06
+### Documentation
+- **#46:** added curl on install os base software
+- **#47:** added fix-missing and fix-broken flags to all apt install command
+- **#48:** moved chromium installation to official repositories
+- **#49:** moved down PS1 configuration
+- **#50:** removd host flag from mysql admin password update
+- **#51:** added openssh installation instructions
+
+### Maintenance Activities
+- **#35:** added git-chglog configuration
+
+### Pull Requests
+- Merge pull request [#57](https://github.com/jorgealbertojc/things-todo-after-install-ubuntu/issues/57) from jorgealbertojc/doc/v1.0.2/issue-51/fix-flags-base-software-and-move-installation-instructions/add-openssh-installation-instructions
+- Merge pull request [#56](https://github.com/jorgealbertojc/things-todo-after-install-ubuntu/issues/56) from jorgealbertojc/doc/v1.0.2/issue-50/fix-flags-base-software-and-move-installation-instructions/remove-h-flag-from-mysql-admin-password-update
+- Merge pull request [#55](https://github.com/jorgealbertojc/things-todo-after-install-ubuntu/issues/55) from jorgealbertojc/doc/v1.0.2/issue-49/fix-flags-base-software-and-move-installation-instructions/move-down-ps1-configuration-after-install-os-base-software
+- Merge pull request [#54](https://github.com/jorgealbertojc/things-todo-after-install-ubuntu/issues/54) from jorgealbertojc/doc/v1.0.2/issue-48/fix-flags-base-software-and-move-installation-instructions/move-chromium-browser-installation-to-official-repositories
+- Merge pull request [#53](https://github.com/jorgealbertojc/things-todo-after-install-ubuntu/issues/53) from jorgealbertojc/doc/v1.0.2/issue-47/fix-flags-add-base-software-and-move-installation-instructions/add-fix-missing-and-fix-broken-to-every-apt-command-execution
+- Merge pull request [#52](https://github.com/jorgealbertojc/things-todo-after-install-ubuntu/issues/52) from jorgealbertojc/doc/v1.0.2/issue-46/fix-flags-add-base-software-and-move-installation/add-curl-on-install-os-base-software
+- Merge pull request [#45](https://github.com/jorgealbertojc/things-todo-after-install-ubuntu/issues/45) from jorgealbertojc/v1.0.1-rc
+- Merge pull request [#44](https://github.com/jorgealbertojc/things-todo-after-install-ubuntu/issues/44) from jorgealbertojc/chore/v1.0.1/issue-35/fix-repo-docs-and-other-things/configure-git-chglog
+
+
 <a name="1.0.1"></a>
 ## `1.0.1` - 2022-08-02
 ### Documentation
@@ -43,4 +67,5 @@
 - Merge pull request [#23](https://github.com/jorgealbertojc/things-todo-after-install-ubuntu/issues/23) from jorgealbertojc/doc/v1.0.0/issue-4/split-sections-to-separated-files
 
 
-[Unreleased]: https://github.com/jorgealbertojc/things-todo-after-install-ubuntu/compare/1.0.1...HEAD
+[Unreleased]: https://github.com/jorgealbertojc/things-todo-after-install-ubuntu/compare/1.0.2...HEAD
+[1.0.2]: https://github.com/jorgealbertojc/things-todo-after-install-ubuntu/compare/1.0.1...1.0.2
