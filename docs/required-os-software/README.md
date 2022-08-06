@@ -34,8 +34,17 @@ sudo apt -y install vim ubuntu-restricted-* build-essential \
     linux-headers-$(uname -r) software-properties-common \
     gconf2 dconf-editor macchanger pavucontrol pulseaudio \
     libdvdread8 p7zip-full unace unzip file-roller atool rar \
+    openssh-server \
     --fix-missing --fix-broken
 ```
+
+## Generate SSH Key
+
+```bash
+ssh-keygen -t ed25519 -C "$(hostname)/$(whoami)"
+```
+
+> _NOTE: This command does not require `sudo` because generate a key for the current user_
 
 ## Configure PS1 Terminal Prompt Design
 
