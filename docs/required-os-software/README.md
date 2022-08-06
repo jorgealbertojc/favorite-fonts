@@ -39,7 +39,7 @@ export PS1="\[\e[00;37m\]\n\[\e[0m\]\[\e[00;33m\][\[\e[0m\]\[\e[00;34m\]\w\[\e[0
 
 ```bash
 sudo apt -y install vim ubuntu-restricted-* build-essential \
-    net-tools network-manager lm-sensors nmap \
+    net-tools network-manager lm-sensors nmap curl \
     linux-headers-$(uname -r) software-properties-common \
     gconf2 dconf-editor macchanger pavucontrol pulseaudio \
     libdvdread8 p7zip-full unace unzip file-roller atool rar
