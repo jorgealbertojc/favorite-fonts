@@ -26,6 +26,26 @@ sudo apt -y update --fix-missing \
 && sudo apt -y autoremove
 ```
 
+## Install OS Base Software
+
+```bash
+sudo apt -y install vim ubuntu-restricted-* build-essential \
+    net-tools network-manager lm-sensors nmap curl \
+    linux-headers-$(uname -r) software-properties-common \
+    gconf2 dconf-editor macchanger pavucontrol pulseaudio \
+    libdvdread8 p7zip-full unace unzip file-roller atool rar \
+    openssh-server \
+    --fix-missing --fix-broken
+```
+
+## Generate SSH Key
+
+```bash
+ssh-keygen -t ed25519 -C "$(hostname)/$(whoami)"
+```
+
+> _NOTE: This command does not require `sudo` because generate a key for the current user_
+
 ## Configure PS1 Terminal Prompt Design
 
 On file `${HOME}/.bashrc`
@@ -35,23 +55,14 @@ On file `${HOME}/.bashrc`
 export PS1="\[\e[00;37m\]\n\[\e[0m\]\[\e[00;33m\][\[\e[0m\]\[\e[00;34m\]\w\[\e[0m\]\[\e[00;33m\]]\[\e[0m\]\[\e[00;37m\]\n\[\e[0m\]\[\e[01;32m\]\u\[\e[0m\]\[\e[01;33m\]@\[\e[0m\]\[\e[01;32m\]\h\[\e[0m\]\[\e[00;34m\]:\[\e[0m\]\[\e[00;31m\]\\$\[\e[0m\]\[\e[00;37m\] \[\e[0m\]"
 ```
 
-## Install OS Base Software
-
-```bash
-sudo apt -y install vim ubuntu-restricted-* build-essential \
-    net-tools network-manager lm-sensors nmap \
-    linux-headers-$(uname -r) software-properties-common \
-    gconf2 dconf-editor macchanger pavucontrol pulseaudio \
-    libdvdread8 p7zip-full unace unzip file-roller atool rar
-```
-
 ## Install Tweaks
 
 ### For Ubuntu
 
 ```bash
 sudo apt -y install \
-    gnome-shell-extensions gnome-shell-extension-prefs gnome-tweaks
+    gnome-shell-extensions gnome-shell-extension-prefs gnome-tweaks \
+    --fix-missing --fix-broken
 ```
 
 ### For ElementaryOS
@@ -59,7 +70,8 @@ sudo apt -y install \
 ```bash
 sudo add-apt-repository -y ppa:philip.scott/pantheon-tweaks \
 && sudo apt -y update --fix-msising \
-&& sudo apt install pantheon-tweaks
+&& sudo apt install pantheon-tweaks \
+    --fix-missing --fix-broken
 ```
 
 ## Install Favorite Fonts
