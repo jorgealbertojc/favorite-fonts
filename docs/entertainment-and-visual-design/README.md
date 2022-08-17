@@ -72,6 +72,6 @@ _Install BIOS files by Emulator_
 
 ```bash
 sudo apt -y install texlive-full texlive-xetex \
-    libreoffice libreoffice-l10n-es \
+    libreoffice libreoffice-l10n-es texmaker \
     --fix-missing --fix-broken
 ```
