@@ -1,6 +1,20 @@
 <!-- <a name="unreleased"></a>
 [Unreleased]
 -->
+<a name="1.0.3"></a>
+## `[1.0.3]` - 2022-08-18
+### Documentation
+- **#59:** added texmaker installation instructions
+- **#60:** added golang section and golang dependencies
+- **#61:** added docker post installation instructions
+
+### Pull Requests
+- Merge pull request [#64](https://github.com/jorgealbertojc/things-todo-after-install-ubuntu/issues/64) from jorgealbertojc/doc/v1.0.3/issue-61/office-golang-docker/docker-installation-instructions/add-post-installation-intructions
+- Merge pull request [#63](https://github.com/jorgealbertojc/things-todo-after-install-ubuntu/issues/63) from jorgealbertojc/doc/v1.0.3/issue-60/office-golang-and-docker/golang-dependencies/add-sections-and-gitchglog-dependency
+- Merge pull request [#62](https://github.com/jorgealbertojc/things-todo-after-install-ubuntu/issues/62) from jorgealbertojc/doc/v1.0.3/issue-59/office-golang-and-docker/office-suite/add-texmaker-installation-instructions
+- Merge pull request [#58](https://github.com/jorgealbertojc/things-todo-after-install-ubuntu/issues/58) from jorgealbertojc/v1.0.2-rc
+
+
 <a name="1.0.2"></a>
 ## `[1.0.2]` - 2022-08-06
 ### Documentation
@@ -67,5 +81,6 @@
 - Merge pull request [#23](https://github.com/jorgealbertojc/things-todo-after-install-ubuntu/issues/23) from jorgealbertojc/doc/v1.0.0/issue-4/split-sections-to-separated-files
 
 
-[Unreleased]: https://github.com/jorgealbertojc/things-todo-after-install-ubuntu/compare/1.0.2...HEAD
+[Unreleased]: https://github.com/jorgealbertojc/things-todo-after-install-ubuntu/compare/1.0.3...HEAD
+[1.0.3]: https://github.com/jorgealbertojc/things-todo-after-install-ubuntu/compare/1.0.2...1.0.3
 [1.0.2]: https://github.com/jorgealbertojc/things-todo-after-install-ubuntu/compare/1.0.1...1.0.2
