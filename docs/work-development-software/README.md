@@ -166,6 +166,38 @@ sudo apt -y install /path/to/package.deb \
     && sudo apt install docker-ce docker-ce-cli containerd.io docker-compose-plugin
     ```
 
+    Post Install
+
+    > _NOTE: After install docker a common user cannot use `docker` command so its required to be added to specific group to let users execute `docker` command_
+
+    > _WARN: The docker group grants privileges equivalent to the `root` user. For details on how this impacts security in your system, see [Docker Daemon Attack Surface](https://docs.docker.com/engine/security/#docker-daemon-attack-surface)._
+
+    1. Create docker group (_if not exists_)
+
+        ```bash
+        sudo groupadd docker
+        ```
+
+    2. Add your user to the docker group
+
+        ```bash
+        sudo usermod -aG docker $(whoami)
+        ```
+
+    3. Logout and re login (_or simply restart your system_)
+
+        You can use the following command to set temporary permissions on your current terminal session:
+
+        ```bash
+        newgrp docker
+        ```
+
+    4. Test it
+
+        ```
+        docker run hello-world
+        ```
+
 * _**Audio Recorder**_
 
     Add PPA Repository and install it
