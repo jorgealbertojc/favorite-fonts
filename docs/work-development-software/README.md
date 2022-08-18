@@ -453,6 +453,20 @@ sudo npm install --location=global \
 
 > _NOTE: `nodejs-v16.16-lts` is used in this installation_
 
+## GoLang Global Dependencies
+
+This dependencies are installed with the `go install` command:
+
+**`git-chglog`**
+
+Command to automatize CHANGELOG.md generation. Cool for release/version automation process.
+
+```bash
+go install github.com/git-chglog/git-chglog/cmd/git-chglog@v0.15.1
+```
+
+> _NOTE: check for updates continuously to get the latest verified version_
+
 ## Web Development Software
 
 > _*NOTE*: For the current developments we need to install `php7.2`_
